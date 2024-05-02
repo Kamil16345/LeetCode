@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MergeSortedArray_88 {
+//Task 88
+public class MergeSortedArray {
     public static void main(String[] args) {
         int[] nums1 = new int[]{1,2,3,0,0,0};
         int m = 3;
