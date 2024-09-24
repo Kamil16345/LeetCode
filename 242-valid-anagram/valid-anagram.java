@@ -5,24 +5,16 @@ class Solution {
             return false;
         }
         for (Character ch : s.toCharArray()) {
-            if (map.containsKey(ch)) {
-                Integer integer = map.get(ch);
-                integer++;
-                map.put(ch, integer);
-            } else {
-                map.put(ch, 1);
-            }
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
         for (Character ch : t.toCharArray()) {
             if (map.containsKey(ch)) {
-                Integer integer = map.get(ch);
-                integer--;
-                map.put(ch, integer);
-                if (integer == 0) {
+                map.put(ch, map.getOrDefault(ch, 0) - 1);
+                if(map.get(ch)==0){
                     map.remove(ch);
                 }
             }
         }
-        return map.size() <= 0;
+        return map.isEmpty();
     }
 }
