@@ -1,26 +1,29 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        HashMap<Character, Integer> occurrences = new HashMap<>();
-        char[] magazineArr = magazine.toCharArray();
-        char[] ransomNoteArr = ransomNote.toCharArray();
-        for (char ch : magazineArr){
-            if(occurrences.containsKey(ch)){
-                occurrences.put(ch, occurrences.get(ch)+1);
-            } else {
-                occurrences.put(ch, 1);
+        HashMap<Character, Integer> magazineMap = new HashMap<>();
+        for(int i=0; i<magazine.length();i++){
+            if(magazineMap.containsKey(magazine.charAt(i))){
+                int val = magazineMap.get(magazine.charAt(i));
+                val++;
+                magazineMap.put(magazine.charAt(i),val);
+            }else{
+                magazineMap.put(magazine.charAt(i),1);
             }
         }
-        for (char ch : ransomNoteArr){
-            if(occurrences.containsKey(ch)){
-                if(occurrences.get(ch)>0){
-                    occurrences.put(ch, occurrences.get(ch)-1);
-                } else {
-                    return false;
+        for(int i=0; i<ransomNote.length();i++){
+            boolean containsKey = magazineMap.containsKey(ransomNote.charAt(i));
+            Integer integer = magazineMap.get(ransomNote.charAt(i));
+            if(magazineMap.containsKey(ransomNote.charAt(i)) && magazineMap.get(ransomNote.charAt(i))>0){
+                int val = magazineMap.get(ransomNote.charAt(i));
+                val--;
+                magazineMap.put(ransomNote.charAt(i),val);
+                if(i==ransomNote.length()-1){
+                    return true;
                 }
-            } else {
+            }else{
                 return false;
             }
         }
-        return true;
+        return false;
     }
 }
