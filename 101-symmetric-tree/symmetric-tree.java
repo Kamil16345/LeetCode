@@ -15,9 +15,7 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        boolean sameTree = isSameTree(root.left, root.right);
-        System.out.println("sameTree: "+sameTree);
-        return sameTree;
+        return isSameTree(root.left, root.right);
     }
 
     public TreeNode invertTree(TreeNode p) {
