@@ -1,10 +1,10 @@
 class Solution {
     public boolean isPalindrome(int x) {
+        String stringX= String.valueOf(x);
         int start = 0;
-        int end = String.valueOf(x).toCharArray().length-1;
-        char[] chars = String.valueOf(x).toCharArray();
+        int end = stringX.length()-1;
         while(start<=end){
-            if(chars[start]!=chars[end]){
+            if(stringX.charAt(start)!=stringX.charAt(end)){
                 return false;
             }
             start++;
